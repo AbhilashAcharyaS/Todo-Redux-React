@@ -10,7 +10,10 @@ function App() {
   return (
     <Provider store={appStore}>
       <div className='text-white'>
+        <h1 className='text-center text-4xl font-extrabold my-4 mt-16 sm:my-8'>Todo using Redux Store, Local Storage</h1>
+        <div className='flex flex-col sm:flex-row'>
         <TodoForm/>
+        </div>
         <TodoItems/>
       </div>
     </Provider>

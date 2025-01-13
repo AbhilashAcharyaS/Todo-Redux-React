@@ -18,8 +18,8 @@ const TodoItems = () => {
     }
     
   return (
-    <>
-    <div>Todos</div>
+    <div className='mt-12 mb-12 border-2 py-4 bg-slate-900 w-11/12 sm:w-5/6 mx-auto rounded-3xl'>
+    <h1 className='text-3xl text-center font-extrabold'>Your Todos</h1>
     <ul className="list-none">
         {todos.map((todo) => (
           <li
@@ -31,9 +31,8 @@ const TodoItems = () => {
               className="cursor-pointer"
               checked={todo.completed}
               onChange={()=>toggleCompleted(todo.id)}
-              placeholder='mark'
           />    
-            <div className={`text-white ${todo.completed ? "line-through": ""}`}>{todo.todoMsg}</div>
+            <div className={`text-white px-4  ${todo.completed ? "line-through": ""}`}>{todo.todoMsg}</div>
 
             <button
              onClick={()=>handleDelete(todo.id)}
@@ -57,7 +56,7 @@ const TodoItems = () => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 
