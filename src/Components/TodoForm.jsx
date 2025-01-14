@@ -38,8 +38,7 @@ function TodoForm() {
       setEnableEdit(true);
       setEditText(allEditTodos[0].todoMsg);
       setIdOfEditTodo(allEditTodos[0].id)
-      console.log(editText);
-      
+      // console.log(editText);
     }
 
     // return allEditTodos[0];
@@ -54,7 +53,7 @@ function TodoForm() {
     
       <input
         type="text"
-        className="bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out "
+        className="bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
         placeholder="Enter a Todo..."
         value={enableEdit ? editText :input}
         onChange={(e) => enableEdit ? setEditText(e.target.value) : setInput(e.target.value)}
