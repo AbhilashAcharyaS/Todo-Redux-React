@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo, toggleComplete, toggleEdit } from "../store/todoSlice";
+import TodoForm from "./TodoForm";
 
 const TodoItems = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-  if (!todos || todos.length === 0) return <h1>No items to show!</h1>;
+  // if (!todos || todos.length === 0) return (<> <TodoForm/> <h1 className="text-center">No items to show!</h1></>);
 
   const handleDelete = (id) => {
     dispatch(removeTodo(id));
@@ -22,8 +23,10 @@ const TodoItems = () => {
   };
 
   return (
-    <div className="mt-12 mb-12 border-2 py-4 bg-slate-900 w-11/12 sm:w-5/6 mx-auto rounded-3xl">
+    <div className="mt-12 border-2 py-4 bg-slate-900 w-11/12 sm:w-5/6 mx-auto rounded-3xl">
       <h1 className="text-3xl text-center font-extrabold">Your Todos</h1>
+
+      {!todos && <div> <TodoForm/> <h1 className="text-center">No items to show!</h1> </div>}
       <ul className="list-none">
         {todos.map((todo) => (
           <li
