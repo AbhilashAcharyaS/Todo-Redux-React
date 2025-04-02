@@ -10,7 +10,13 @@ const TodoItems = () => {
   // if (!todos || todos.length === 0) return (<> <TodoForm/> <h1 className="text-center">No items to show!</h1></>);
 
   const handleDelete = (id) => {
-    dispatch(removeTodo(id));
+    if (id === 1) {
+      alert("Cannot Delete Default!");
+    } else {
+      if (confirm("Are You sure to Delete this?")) {
+        dispatch(removeTodo(id));
+      }
+    }
   };
 
   const toggleCompleted = (id) => {
@@ -18,17 +24,20 @@ const TodoItems = () => {
   };
 
   const handleEdit = (id) => {
-    dispatch(toggleEdit(id));
-    window.scrollTo({top:0, behavior:"smooth"})
+    if (id === 1) alert("Cannot Edit Default!");
+    else {
+      dispatch(toggleEdit(id));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
     <div className="mt-12 border-2 py-4 bg-slate-900 w-11/12 sm:w-5/6 mx-auto rounded-3xl">
       <h1 className="text-3xl text-center font-extrabold">Your Todos</h1>
 
-      {!todos && <div> <TodoForm/> <h1 className="text-center">No items to show!</h1> </div>}
+      {/* {!todos && <div> <TodoForm/> <h1 className="text-center">No items to show!</h1> </div>} */}
       <ul className="list-none">
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
           <li
             className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={todo.id}
@@ -48,7 +57,8 @@ const TodoItems = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row">
-              <button disabled={todo.completed}
+              <button
+                disabled={todo.completed}
                 className="px-3 py-1  mx-2 text-center rounded-md bg-gray-600 mb-1 sm:mb-0"
                 onClick={() => handleEdit(todo.id)}
               >
